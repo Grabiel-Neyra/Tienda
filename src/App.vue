@@ -6,7 +6,7 @@ const menuOpen = ref(false)
 
 <template>
   <header>
-    <div class="mx-auto flex items-center justify-between p-6">
+    <div class="mx-auto flex items-center justify-between pb-6 pt-6 lg:px-15 bg-transparent">
       <div class="lg:hidden">
         <button
           class="lg:hidden cursor-pointer"

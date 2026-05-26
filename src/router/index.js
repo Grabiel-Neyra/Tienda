@@ -10,7 +10,7 @@ const routes = [
     component: () => import('@/views/ContactoVIew.vue')
   },
   {
-    path: '/detalle/',
+    path: '/detalle/:id',
     component: () => import('@/views/DetalleView.vue')
   },
   {

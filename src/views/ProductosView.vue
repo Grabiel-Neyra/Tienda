@@ -14,16 +14,16 @@ import productos from '../tienda.json' // ← importa el JSON directo
 
 <template>
   <h1>Productos</h1>
-  <section class="">
-    <div>
-      <div>
+  <section class="flex">
+    <div class="w-1/4">
+      <div class="flex items-center gap-2.5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-6"
+          class="size-5"
         >
           <path
             stroke-linecap="round"
@@ -33,34 +33,58 @@ import productos from '../tienda.json' // ← importa el JSON directo
         </svg>
         <p>Filtros</p>
       </div>
-      <div>
-        <h3>Categoria</h3>
-        <button>Todos</button>
-        <button>Calzado</button>
-        <button>Accesorios</button>
-        <button>Remeras</button>
-        <button>Pantalones</button>
+      <div class="w-3/6 border-b pt-3 pb-3 border-gray-200 pt-2.5 flex flex-col items-start">
+        <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Categoria</h3>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Todos
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Calzado
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Accesorios
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Remeras
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Pantalones
+        </button>
       </div>
-      <div>
-        <h3>Genero</h3>
-        <button>Todos</button>
-        <button>Hombre</button>
-        <button>Mujer</button>
-        <button>Unisex</button>
+      <div class="w-3/6 border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
+        <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Genero</h3>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Todos
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Hombre
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Mujer
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Unisex
+        </button>
       </div>
-      <div>
-        <h3>Etiquetas</h3>
-        <button>Ofertas</button>
-        <button>Nuevo</button>
-        <button>Populares</button>
+      <div class="w-3/6 border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
+        <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Etiquetas</h3>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Ofertas
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Nuevo
+        </button>
+        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+          Populares
+        </button>
       </div>
     </div>
-    <div>
-      <div v-for="producto in productos" :key="producto.id">
+    <div class="w-3/4 flex flex-wrap gap-2.5">
+      <div class="w-1/4" v-for="producto in productos" :key="producto.id">
         <RouterLink :to="`/detalle/${producto.id}`">
-          <span v-if="!(producto.tag == null)">{{ producto.tag }}</span>
+          <span class="absolute" v-if="!(producto.tag == null)">{{ producto.tag }}</span>
           <figure>
-            <img :src="producto.image" :alt="producto.name" />
+            <img class="rounded-3xl" :src="producto.image" :alt="producto.name" />
           </figure>
           <div>
             <p>{{ producto.name }}</p>

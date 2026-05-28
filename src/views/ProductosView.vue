@@ -2,6 +2,19 @@
 // import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import productos from '../tienda.json' // ← importa el JSON directo
+import { ref } from 'vue'
+
+const categoriaSeleccionada = ref('Todos')
+const generoSeleccionado = ref('Todos')
+const etiquetaSeleccionada = ref('null')
+
+function filtrarCategoria() {
+  return productos.filter((p) => {
+    return categoriaSeleccionada.value == 'Todos' || categoriaSeleccionada.value == p.category
+    return generoSeleccionado.value == 'Todos' || categoriaSeleccionada.value == p.gender
+    return etiquetaSeleccionada.value == p.tag
+  })
+}
 
 // Cuando quieras pasar a la API real, comentá la línea de arriba
 // y descomentá esto:
@@ -14,8 +27,8 @@ import productos from '../tienda.json' // ← importa el JSON directo
 
 <template>
   <h1>Productos</h1>
-  <section class="flex">
-    <div class="w-1/4">
+  <section class="flex gap-10">
+    <div class="min-w-1/6">
       <div class="flex items-center gap-2.5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,25 +46,40 @@ import productos from '../tienda.json' // ← importa el JSON directo
         </svg>
         <p>Filtros</p>
       </div>
-      <div class="w-3/6 border-b pt-3 pb-3 border-gray-200 pt-2.5 flex flex-col items-start">
+      <div class="w-full border-b pt-3 pb-3 border-gray-200 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Categoria</h3>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="categoriaSeleccionada = 'Todos'"
+          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+        >
           Todos
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="categoriaSeleccionada = 'Calzado'"
+          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+        >
           Calzado
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="categoriaSeleccionada = 'Accesorios'"
+          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+        >
           Accesorios
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
-          Remeras
+        <button
+          @click="categoriaSeleccionada = 'Esenciales'"
+          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+        >
+          Esenciales
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
-          Pantalones
+        <button
+          @click="categoriaSeleccionada = 'Hogar'"
+          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+        >
+          Hogar
         </button>
       </div>
-      <div class="w-3/6 border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
+      <div class="w-full border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Genero</h3>
         <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
           Todos
@@ -66,7 +94,7 @@ import productos from '../tienda.json' // ← importa el JSON directo
           Unisex
         </button>
       </div>
-      <div class="w-3/6 border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
+      <div class="w-full border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Etiquetas</h3>
         <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
           Ofertas
@@ -79,18 +107,32 @@ import productos from '../tienda.json' // ← importa el JSON directo
         </button>
       </div>
     </div>
-    <div class="w-3/4 flex flex-wrap gap-2.5">
-      <div class="w-1/4" v-for="producto in productos" :key="producto.id">
-        <RouterLink :to="`/detalle/${producto.id}`">
-          <span class="absolute" v-if="!(producto.tag == null)">{{ producto.tag }}</span>
-          <figure>
-            <img class="rounded-3xl" :src="producto.image" :alt="producto.name" />
-          </figure>
-          <div>
-            <p>{{ producto.name }}</p>
-            <p>{{ producto.price }}</p>
-            <div>
-              <button>
+    <div class="grid grid-cols-3 lg:grid-cols-4 gap-2.5">
+      <div
+        class="relative cols overflow-hidden"
+        v-for="producto in filtrarCategoria()"
+        :key="producto.id"
+      >
+        <RouterLink class="" :to="`/detalle/${producto.id}`">
+          <span
+            class="absolute top-2 left-3 bg-blue-600 uppercase text-white font-semibold py-1 px-3 text-[12px] z-10 rounded-2xl"
+            v-if="!(producto.tag == null)"
+            >{{ producto.tag }}</span
+          >
+          <div class="relative aspect-square overflow-hidden rounded-2xl mb-4">
+            <figure>
+              <img
+                class="hover:scale-110 object-cover transition-all duration-700 ease-out rounded-2xl"
+                :src="producto.image"
+                :alt="producto.name"
+              />
+            </figure>
+            <div
+              class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
+            >
+              <button
+                class="w-full bg-foreground/90 backdrop-blur-sm text-background py-3.5 flex items-center justify-center gap-2 text-sm font-medium tracking-wide hover:bg-foreground transition-colors"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -108,6 +150,11 @@ import productos from '../tienda.json' // ← importa el JSON directo
                 Agregar
               </button>
             </div>
+          </div>
+          <div>
+            <p class="font-medium text-foreground text-sm tracking-tight">{{ producto.name }}</p>
+            <p class="text-sm font-semibold text-foreground tabular-nums">${{ producto.price }}</p>
+            <div></div>
           </div>
         </RouterLink>
       </div>

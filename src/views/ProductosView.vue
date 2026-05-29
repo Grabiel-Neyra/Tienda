@@ -1,5 +1,4 @@
 <script setup>
-// import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import productos from '../tienda.json' // ← importa el JSON directo
 import { computed, ref } from 'vue'
@@ -7,21 +6,22 @@ import { computed, ref } from 'vue'
 const categoriaSeleccionada = ref('Todos')
 const generoSeleccionado = ref('Todos')
 const etiquetaSeleccionada = ref('Todos')
-const contadorDeProducto = computed(() => filtrarCategoria().length)
 
 const categorias = ['Todos', ...new Set(productos.map((p) => p.category))]
 const generos = ['Todos', ...new Set(productos.map((p) => p.gender))]
 const etiquetas = ['Todos', ...new Set(productos.map((p) => p.tag).filter((t) => t !== null))]
 
-function filtrarCategoria() {
+const productosFiltrados = computed(() => {
   return productos.filter((p) => {
     return (
-      (categoriaSeleccionada.value == 'Todos' || categoriaSeleccionada.value == p.category) &&
-      (generoSeleccionado.value == 'Todos' || generoSeleccionado.value == p.gender) &&
-      (etiquetaSeleccionada.value == 'Todos' || etiquetaSeleccionada.value == p.tag)
+      (categoriaSeleccionada.value === 'Todos' || categoriaSeleccionada.value === p.category) &&
+      (generoSeleccionado.value === 'Todos' || generoSeleccionado.value === p.gender) &&
+      (etiquetaSeleccionada.value === 'Todos' || etiquetaSeleccionada.value === p.tag)
     )
   })
-}
+})
+
+const contadorDeProducto = computed(() => productosFiltrados.value.length)
 
 // Cuando quieras pasar a la API real, comentá la línea de arriba
 // y descomentá esto:
@@ -116,23 +116,23 @@ function filtrarCategoria() {
     <div class="grid grid-cols-3 lg:grid-cols-4 gap-2.5">
       <div
         class="relative cols overflow-hidden"
-        v-for="producto in filtrarCategoria()"
+        v-for="producto in productosFiltrados"
         :key="producto.id"
       >
         <RouterLink class="" :to="`/detalle/${producto.id}`">
           <span
             class="absolute top-2 left-3 bg-blue-600 uppercase text-white font-semibold py-1 px-3 text-[12px] z-10 rounded-2xl"
-            v-if="!(producto.tag == null)"
+            v-if="producto.tag !== null"
             >{{ producto.tag }}</span
           >
           <div class="relative aspect-square overflow-hidden rounded-2xl mb-4">
-            <figure>
+            <div>
               <img
                 class="hover:scale-110 object-cover transition-all duration-700 ease-out rounded-2xl"
                 :src="producto.image"
                 :alt="producto.name"
               />
-            </figure>
+            </div>
             <div
               class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
             >
@@ -160,7 +160,6 @@ function filtrarCategoria() {
           <div>
             <p class="font-medium text-foreground text-sm tracking-tight">{{ producto.name }}</p>
             <p class="text-sm font-semibold text-foreground tabular-nums">${{ producto.price }}</p>
-            <div></div>
           </div>
         </RouterLink>
       </div>

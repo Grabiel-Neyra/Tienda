@@ -21,6 +21,13 @@ const productosFiltrados = computed(() => {
   })
 })
 
+function limpiarFiltros(){
+  categoriaSeleccionada.value ='Todos'
+  generoSeleccionado.value = 'Todos'
+  etiquetaSeleccionada.value = 'Todos'
+}
+
+
 const contadorDeProducto = computed(() => productosFiltrados.value.length)
 
 // Cuando quieras pasar a la API real, comentá la línea de arriba
@@ -33,13 +40,16 @@ const contadorDeProducto = computed(() => productosFiltrados.value.length)
 </script>
 
 <template>
-  <section>
+  <section class="pb-10  border-b border-gray-200">
     <div>
-      <RouterLink to="/">Volver al inicio</RouterLink>
-      <p>Todas las colecciones</p>
-      <div>
-        <h2>Tienda</h2>
-        <span>{{ contadorDeProducto }}</span>
+      <RouterLink class="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4" to="/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+</svg>
+ Volver al inicio</RouterLink>
+      <p class=" uppercase font-medium text-blue-600 tracking-[0.2em] mb-2 text-xs ">Todas las colecciones</p>
+      <div class="flex justify-between">
+        <h2 class=" text-3xl lg:text-5xl tracking-tight font-semibold">Tienda</h2>
+        <span class=" text-gray-400">{{ contadorDeProducto }} productos</span>
       </div>
     </div>
   </section>
@@ -113,9 +123,9 @@ const contadorDeProducto = computed(() => productosFiltrados.value.length)
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-3 lg:grid-cols-4 gap-2.5">
+    <div class="grid min-w-4/6 grid-cols-3 lg:grid-cols-4 gap-2.5">
       <div
-        class="relative cols overflow-hidden"
+        class=" relative cols overflow-hidden"
         v-for="producto in productosFiltrados"
         :key="producto.id"
       >
@@ -162,6 +172,13 @@ const contadorDeProducto = computed(() => productosFiltrados.value.length)
             <p class="text-sm font-semibold text-foreground tabular-nums">${{ producto.price }}</p>
           </div>
         </RouterLink>
+      </div>
+
+      <div v-if="productosFiltrados.length===0" class="col-span-4 flex flex-col justify-top  items-center">
+        <p class="text-lg font-medium mb-2">No se encontraron productos</p>
+        <p class="text-sm mb-6 text-gray-400">Intenta ajustar o limpiar tus filtros</p>
+        <button @click="limpiarFiltros()" class="cursor-pointer px-6 py-2.5 bg-black text-white rounded-full text-sm font-medium  hover:bg-black/90 transition-colors">Limpiar filtros </button>
+
       </div>
     </div>
   </div>

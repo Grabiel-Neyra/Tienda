@@ -117,4 +117,20 @@ const menuOpen = ref(false)
     </div>
   </header>
   <RouterView />
+
+  <footer>
+    <div>
+      <span>LOGO</span>
+      <div>
+        <p>Mantente al tanto</p>
+        <p>Accede primero a nuevos lanzamientos, ofertas exclusivas e historias de nuestro atelier.</p>
+        <form class="relative"><input type="email" placeholder="Tu correo electrónico" class="w-full bg-transparent border-b border-background/20 focus:border-primary py-3 pr-12 text-sm text-background placeholder:text-background/30 focus:outline-none transition-colors" value=""><button type="submit" class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-background/50 hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></form>
+      </div>
+    </div>
+    <div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </footer>
 </template>

@@ -2,17 +2,24 @@
 // import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import productos from '../tienda.json' // ← importa el JSON directo
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const categoriaSeleccionada = ref('Todos')
 const generoSeleccionado = ref('Todos')
-const etiquetaSeleccionada = ref('null')
+const etiquetaSeleccionada = ref('Todos')
+const contadorDeProducto = computed(() => filtrarCategoria().length)
+
+const categorias = ['Todos', ...new Set(productos.map((p) => p.category))]
+const generos = ['Todos', ...new Set(productos.map((p) => p.gender))]
+const etiquetas = ['Todos', ...new Set(productos.map((p) => p.tag).filter((t) => t !== null))]
 
 function filtrarCategoria() {
   return productos.filter((p) => {
-    return categoriaSeleccionada.value == 'Todos' || categoriaSeleccionada.value == p.category
-    return generoSeleccionado.value == 'Todos' || categoriaSeleccionada.value == p.gender
-    return etiquetaSeleccionada.value == p.tag
+    return (
+      (categoriaSeleccionada.value == 'Todos' || categoriaSeleccionada.value == p.category) &&
+      (generoSeleccionado.value == 'Todos' || generoSeleccionado.value == p.gender) &&
+      (etiquetaSeleccionada.value == 'Todos' || etiquetaSeleccionada.value == p.tag)
+    )
   })
 }
 
@@ -26,9 +33,18 @@ function filtrarCategoria() {
 </script>
 
 <template>
-  <h1>Productos</h1>
-  <section class="flex gap-10">
-    <div class="min-w-1/6">
+  <section>
+    <div>
+      <RouterLink to="/">Volver al inicio</RouterLink>
+      <p>Todas las colecciones</p>
+      <div>
+        <h2>Tienda</h2>
+        <span>{{ contadorDeProducto }}</span>
+      </div>
+    </div>
+  </section>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-12 flex gap-10">
+    <div class="max-w-1/6 min-w-1/6">
       <div class="flex items-center gap-2.5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -44,67 +60,140 @@ function filtrarCategoria() {
             d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
           />
         </svg>
-        <p>Filtros</p>
+        <p class="font-semibold">Filtros</p>
       </div>
       <div class="w-full border-b pt-3 pb-3 border-gray-200 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Categoria</h3>
-        <button
+        <!-- <button
           @click="categoriaSeleccionada = 'Todos'"
-          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+          :class="categoriaSeleccionada === 'Todos' ? 'bg-black text-white' : ' hover:bg-gray-100'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
         >
           Todos
         </button>
         <button
           @click="categoriaSeleccionada = 'Calzado'"
-          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+          :class="
+            categoriaSeleccionada === 'Calzado' ? 'bg-black text-white' : ' hover:bg-gray-100'
+          "
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
         >
           Calzado
         </button>
         <button
           @click="categoriaSeleccionada = 'Accesorios'"
-          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+          :class="
+            categoriaSeleccionada === 'Accesorios' ? 'bg-black text-white' : ' hover:bg-gray-100'
+          "
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
         >
           Accesorios
         </button>
         <button
           @click="categoriaSeleccionada = 'Esenciales'"
-          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+          :class="
+            categoriaSeleccionada === 'Esenciales' ? 'bg-black text-white' : ' hover:bg-gray-100'
+          "
         >
           Esenciales
         </button>
         <button
+          :class="categoriaSeleccionada === 'Hogar' ? 'bg-black text-white' : ' hover:bg-gray-100'"
           @click="categoriaSeleccionada = 'Hogar'"
-          class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
         >
           Hogar
+        </button> -->
+        <button
+          @click="categoriaSeleccionada = categoria"
+          :class="
+            categoriaSeleccionada === categoria ? 'bg-black text-white' : ' hover:bg-gray-100'
+          "
+          class="text-base mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+          v-for="categoria in categorias"
+          :key="categoria"
+        >
+          {{ categoria }}
         </button>
       </div>
       <div class="w-full border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Genero</h3>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <!-- <button
+          @click="generoSeleccionado = 'Todos'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
           Todos
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="generoSeleccionado = 'Hombre'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
           Hombre
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="generoSeleccionado = 'Mujer'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
           Mujer
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="generoSeleccionado = 'Unisex'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
           Unisex
-        </button>
+        </button> -->
+        <div class="flex flex-wrap gap-2.5">
+          <button
+            @click="generoSeleccionado = genero"
+            :class="
+              generoSeleccionado === genero
+                ? 'bg-black text-white border-black'
+                : 'hover:bg-gray-100  hover:border-gray-950 '
+            "
+            class="px-3 py-1.5 text-xs border font-medium rounded-full transition-all border-gray-300 text-foreground/60"
+            v-for="genero in generos"
+            :key="genero"
+          >
+            {{ genero }}
+          </button>
+        </div>
       </div>
       <div class="w-full border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Etiquetas</h3>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <!-- <button
+          @click="etiquetaSeleccionada = 'Oferta'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
           Ofertas
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
-          Nuevo
+        <button
+          @click="etiquetaSeleccionada = 'Nuevo'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
+          Nuevos
         </button>
-        <button class="mb-1 py-1.5 px-2 rounded-xl hover:bg-gray-100 w-full text-start">
+        <button
+          @click="etiquetaSeleccionada = 'Popular'"
+          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
+        >
           Populares
-        </button>
+        </button> -->
+        <div class="flex flex-wrap gap-2.5">
+          <button
+            @click="etiquetaSeleccionada = etiqueta"
+            :class="
+              etiquetaSeleccionada === etiqueta
+                ? 'bg-black text-white border-black'
+                : 'hover:bg-gray-100  hover:border-gray-950 '
+            "
+            class="px-3 py-1.5 text-xs border font-medium rounded-full transition-all border-gray-300 text-foreground/60"
+            v-for="etiqueta in etiquetas"
+            :key="etiqueta"
+          >
+            {{ etiqueta }}
+          </button>
+        </div>
       </div>
     </div>
     <div class="grid grid-cols-3 lg:grid-cols-4 gap-2.5">
@@ -159,5 +248,5 @@ function filtrarCategoria() {
         </RouterLink>
       </div>
     </div>
-  </section>
+  </div>
 </template>

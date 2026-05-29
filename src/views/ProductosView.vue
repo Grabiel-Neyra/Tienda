@@ -64,47 +64,6 @@ function filtrarCategoria() {
       </div>
       <div class="w-full border-b pt-3 pb-3 border-gray-200 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Categoria</h3>
-        <!-- <button
-          @click="categoriaSeleccionada = 'Todos'"
-          :class="categoriaSeleccionada === 'Todos' ? 'bg-black text-white' : ' hover:bg-gray-100'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Todos
-        </button>
-        <button
-          @click="categoriaSeleccionada = 'Calzado'"
-          :class="
-            categoriaSeleccionada === 'Calzado' ? 'bg-black text-white' : ' hover:bg-gray-100'
-          "
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Calzado
-        </button>
-        <button
-          @click="categoriaSeleccionada = 'Accesorios'"
-          :class="
-            categoriaSeleccionada === 'Accesorios' ? 'bg-black text-white' : ' hover:bg-gray-100'
-          "
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Accesorios
-        </button>
-        <button
-          @click="categoriaSeleccionada = 'Esenciales'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-          :class="
-            categoriaSeleccionada === 'Esenciales' ? 'bg-black text-white' : ' hover:bg-gray-100'
-          "
-        >
-          Esenciales
-        </button>
-        <button
-          :class="categoriaSeleccionada === 'Hogar' ? 'bg-black text-white' : ' hover:bg-gray-100'"
-          @click="categoriaSeleccionada = 'Hogar'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Hogar
-        </button> -->
         <button
           @click="categoriaSeleccionada = categoria"
           :class="
@@ -119,30 +78,6 @@ function filtrarCategoria() {
       </div>
       <div class="w-full border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Genero</h3>
-        <!-- <button
-          @click="generoSeleccionado = 'Todos'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Todos
-        </button>
-        <button
-          @click="generoSeleccionado = 'Hombre'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Hombre
-        </button>
-        <button
-          @click="generoSeleccionado = 'Mujer'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Mujer
-        </button>
-        <button
-          @click="generoSeleccionado = 'Unisex'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Unisex
-        </button> -->
         <div class="flex flex-wrap gap-2.5">
           <button
             @click="generoSeleccionado = genero"
@@ -161,24 +96,6 @@ function filtrarCategoria() {
       </div>
       <div class="w-full border-b pt-3 pb-3 border-gray-200 t-2.5 flex flex-col items-start">
         <h3 class="uppercase text-base font-semibold tracking-[0.15em] mb-2">Etiquetas</h3>
-        <!-- <button
-          @click="etiquetaSeleccionada = 'Oferta'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Ofertas
-        </button>
-        <button
-          @click="etiquetaSeleccionada = 'Nuevo'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Nuevos
-        </button>
-        <button
-          @click="etiquetaSeleccionada = 'Popular'"
-          class="mb-1 py-1.5 px-2 rounded-xl w-full text-start"
-        >
-          Populares
-        </button> -->
         <div class="flex flex-wrap gap-2.5">
           <button
             @click="etiquetaSeleccionada = etiqueta"

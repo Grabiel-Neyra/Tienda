@@ -1,0 +1,1 @@
+import{l as e,o as t}from"./index-CrHn7CQM.js";import{t as n}from"./_plugin-vue_export-helper-BDNMzG2s.js";var r={};function i(n,r){return e(),t(`h2`,null,`Frmulario`)}var a=n(r,[[`render`,i]]);export{a as default};

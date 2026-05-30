@@ -7,10 +7,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Tienda/',
-  build: {
-    outDir: 'docs',
-  },
   plugins: [
     tailwindcss(),
     vue(),

@@ -1,12 +1,21 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 const menuOpen = ref(false)
+
+// Cambio de backgraund del nav
+const scrolled= ref(false)
+const handleScroll=()=>{
+  scrolled.value=window.scrollY>10
+}
+onMounted(()=> window.addEventListener('scroll',handleScroll))
+onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
+
 </script>
 
 <template>
-  <header>
-    <div class="mx-auto flex items-center justify-between pb-6 pt-6 lg:px-15 bg-transparent">
+  <header :class="['w-full fixed top-0 right-0 z-50 transition-all duration-500 bg-transparent', scrolled ? 'bg-white/60 backdrop-blur-md shadow-sm ': 'bg-transparent'  ]">
+    <div class=" px-6 lg:px-10 py-6 max-w-7x1 mx-auto flex min-w-7x1">
       <div class="lg:hidden">
         <button
           class="lg:hidden cursor-pointer"

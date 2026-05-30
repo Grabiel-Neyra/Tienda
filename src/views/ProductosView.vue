@@ -40,7 +40,7 @@ const contadorDeProducto = computed(() => productosFiltrados.value.length)
 </script>
 
 <template>
-  <section class="pb-10 pt-24  border-b border-gray-200">
+  <section class="pb-10 mx-auto  lg:max-w-10/12 px-8 pt-24  border-b border-gray-200">
     <div>
       <RouterLink class="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-4" to="/"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -52,8 +52,9 @@ const contadorDeProducto = computed(() => productosFiltrados.value.length)
       </div>
     </div>
   </section>
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 lg:py-12 flex gap-10">
-    <div class="max-w-1/6 min-w-1/6">
+  <div class=" flex-col md:flex-row lg:max-w-10/12 mx-auto px-6 lg:px-8 py-8 lg:py-12 flex gap-10">
+    <!-- Filtros -->
+    <div class="md:min-w-3/12 md:max-w-3/12 lg:max-w-1/6 lg:min-w-1/6">
       <div class="flex items-center gap-2.5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +123,8 @@ const contadorDeProducto = computed(() => productosFiltrados.value.length)
         </div>
       </div>
     </div>
-    <div class="grid min-w-4/6 grid-cols-3 lg:grid-cols-4 gap-2.5">
+    <!-- Productos -->
+    <div class="grid min-w-4/6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-6">
       <div
         class=" relative cols overflow-hidden"
         v-for="producto in productosFiltrados"

@@ -15,8 +15,8 @@ onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
 
 <template>
   <header :class="['w-full fixed top-0 right-0 z-50 transition-all duration-500 bg-transparent', scrolled ? 'bg-white/60 backdrop-blur-md shadow-sm ': 'bg-transparent'  ]">
-    <div class=" px-6 lg:px-10 py-6 max-w-7x1 mx-auto flex min-w-7x1">
-      <div class="lg:hidden">
+    <div class=" justify-between px-6 lg:px-10 py-6 max-w-7x1 mx-auto flex min-w-7x1">
+      <div class="lg:hidden w-1/12 text-center">
         <button
           class="lg:hidden cursor-pointer"
           @click="menuOpen = !menuOpen"
@@ -51,12 +51,12 @@ onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
           </svg>
         </button>
       </div>
-      <div class="w-1/6 text-center lg:text-start">
+      <div class="w-2/6  text-center lg:text-start">
         <a href="/">
           <h1>LOGO</h1>
         </a>
       </div>
-      <nav class="hidden lg:flex w-4/6">
+      <nav class="hidden lg:flex w-4/6 ">
         <ul class="flex font-serif gap-12 justify-center w-full">
           <li><RouterLink class="uppercase hover:text-blue-800" to="/">home</RouterLink></li>
           <li>
@@ -67,7 +67,7 @@ onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
           </li>
         </ul>
       </nav>
-      <div class="flex items-center w-1/6 justify-end gap-5">
+      <div class="flex items-center w-1/6 md:w-1/12 md:gap-3 justify-end gap-5">
         <button class="cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"

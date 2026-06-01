@@ -312,49 +312,366 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
       </div>
     </div>
   </section>
-  <section>
-    <p>Quienes somos</p>
-    <h3>Nació de una obsesión por lo auténtico</h3>
-    <p>
-      Luminous nació en 2018 con una sola premisa: que la moda debería hacerte sentir más tú mismo,
-      no menos. Fundada por diseñadores independientes cansados del fast fashion, hoy somos una
-      comunidad de creadores y consumidores que valoran la permanencia sobre la inmediatez.
-    </p>
-    <p>
-      Cada colección es el resultado de meses de investigación, selección de materiales y
-      colaboración estrecha con artesanos locales. No lanzamos por temporada. Lanzamos cuando algo
-      vale la pena.
-    </p>
-    <div>
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="uppercase text-xl text-blue-600 tracking-widest mb-5 font-light">Quienes somos</p>
+      <h2 class="font-semibold tracking-tight mb-5 text-3xl">
+        Nació de una obsesión por lo <span class="text-blue-600">auténtico</span>
+      </h2>
+      <div class="mb-12">
+        <p class="text-lg leading-relaxed mb-8 text-black/80">
+          Luminous nació en 2018 con una sola premisa: que la moda debería hacerte sentir más tú
+          mismo, no menos. Fundada por diseñadores independientes cansados del fast fashion, hoy
+          somos una comunidad de creadores y consumidores que valoran la permanencia sobre la
+          inmediatez.
+        </p>
+        <p class="leading-relaxed text-black/50 mb-8">
+          Cada colección es el resultado de meses de investigación, selección de materiales y
+          colaboración estrecha con artesanos locales. No lanzamos por temporada. Lanzamos cuando
+          algo vale la pena.
+        </p>
+      </div>
       <div>
-        <img src="../img/quienes-somos-home.jpg" alt="Quienes somos" />
-        <div></div>
-        <div>
-          <span>Atelier Luminous — Madrid, 2018</span>
+        <div class="rounded-3xl mb-8 relative aspect-4/3 overflow-hidden">
+          <img
+            src="../img/quienes-somos-home.jpg"
+            alt="Quienes somos"
+            class="h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
+          <div class="bottom-6 left-6 absolute">
+            <span class="text-sm text-white/80 font-medium">Atelier Luminous — Madrid, 2018</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col items-start w-full p-6 gap-2">
+            <span class="text-3xl tracking-tight font-bold ">6+</span>
+            <span>Años de trayectoria</span>
+          </div>
+          <div class="flex flex-col items-start w-full p-6 gap-2">
+            <span class="text-3xl tracking-tight font-bold ">12K+</span>
+            <span>Clientes satisfechos</span>
+          </div>
+          <div class="flex flex-col items-start w-full p-6 gap-2">
+            <span class="text-3xl tracking-tight font-bold ">4</span>
+            <span>Colecciones al año</span>
+          </div>
+          <div class="flex flex-col items-start w-full p-6 gap-2">
+            <span class="text-3xl tracking-tight font-bold ">100%</span>
+            <span>Materiales certificados</span>
+          </div>
         </div>
       </div>
       <div>
         <div>
-          <span>6+</span>
-          <span>Años de trayectoria</span>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+              />
+            </svg>
+          </div>
+          <h3>Diseño Intemporal</h3>
+          <p>
+            Creamos piezas que trascienden las tendencias. Cada producto está pensado para durar
+            décadas, no temporadas.
+          </p>
         </div>
         <div>
-          <span>12K+</span>
-          <span>Clientes satisfechos</span>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-leaf w-5 h-5 text-primary"
+            >
+              <path
+                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+              ></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+            <h3>Producción Responsable</h3>
+            <p>
+              Trabajamos con materiales sostenibles y talleres certificados que respetan tanto al
+              artesano como al planeta.
+            </p>
+          </div>
         </div>
         <div>
-          <span>4</span>
-          <span>Colecciones al año</span>
-        </div>
-        <div>
-          <span>100%</span>
-          <span>Materiales certificados</span>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shield-check w-5 h-5 text-primary"
+            >
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              ></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+          </div>
+          <h3>Calidad Garantizada</h3>
+          <p>
+            Cada artículo pasa por un proceso de control riguroso. Si no cumple nuestro estándar, no
+            llega a tus manos.
+          </p>
         </div>
       </div>
     </div>
-    <div>
-      <div></div>
-      <div></div>
+  </section>
+  <section>
+    <div class="max-w-7xl mx-auto px-6">
+      <p class="uppercase text-xl text-blue-600 tracking-widest mb-5 font-light">
+        Miles de Clientes Satisfechos
+      </p>
+      <h2 class="font-semibold tracking-tight mb-5 text-3xl">Lo Que Dicen Nuestros Clientes</h2>
+      <div>
+        <div>
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <p>
+            "La calidad no tiene igual. Cada pieza se siente diseñada con una atención obsesiva al
+            detalle. Mi opción favorita para todo lo que necesita ser atemporal."
+          </p>
+          <div>
+            <h3>Maya Chen</h3>
+            <p>Creative Director</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <p>
+          "Aprecio las marcas que entienden la sobriedad. Luminous ofrece piezas que son mínimas
+          pero sustanciales — exactamente lo que mi guardarropa necesitaba."
+        </p>
+        <div>
+          <h3>James Rodriguez</h3>
+          <p>Architect</p>
+        </div>
+        <div>
+          <div class="flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <p>
+            "Desde el empaque hasta el producto en sí, toda la experiencia se siente curada. El
+            reloj Chronos se ha convertido en mi esencial diario. El envío fue impecable."
+          </p>
+          <div>
+            <h3>Aiko Tanaka</h3>
+            <p>Product Designer</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <p>12K+</p>
+          <p>Clientes Felices</p>
+        </div>
+        <div>
+          <p>4.9+</p>
+          <p>Calificación Promedio</p>
+        </div>
+        <div>
+          <p>98%</p>
+          <p>Tasa de Satisfacción</p>
+        </div>
+        <div>
+          <p>24H</p>
+          <p>Envío Rápido</p>
+        </div>
+      </div>
     </div>
   </section>
 </template>

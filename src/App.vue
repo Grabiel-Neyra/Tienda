@@ -4,18 +4,22 @@ import { onMounted, onUnmounted, ref } from 'vue'
 const menuOpen = ref(false)
 
 // Cambio de backgraund del nav
-const scrolled= ref(false)
-const handleScroll=()=>{
-  scrolled.value=window.scrollY>10
+const scrolled = ref(false)
+const handleScroll = () => {
+  scrolled.value = window.scrollY > 10
 }
-onMounted(()=> window.addEventListener('scroll',handleScroll))
-onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
-
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
 <template>
-  <header :class="['w-full fixed top-0 right-0 z-50 transition-all duration-500 bg-transparent', scrolled ? 'bg-white/60 backdrop-blur-md shadow-sm ': 'bg-transparent'  ]">
-    <div class=" justify-between px-6 lg:px-10 py-6 max-w-7x1 mx-auto flex min-w-7x1">
+  <header
+    :class="[
+      'w-full fixed top-0 right-0 z-50 transition-all duration-500 bg-transparent',
+      scrolled ? 'bg-white/60 backdrop-blur-md shadow-sm ' : 'bg-transparent',
+    ]"
+  >
+    <div class="justify-between px-6 lg:px-10 py-6 max-w-7x1 mx-auto flex min-w-7x1">
       <div class="lg:hidden w-1/12 text-center">
         <button
           class="lg:hidden cursor-pointer"
@@ -51,12 +55,12 @@ onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
           </svg>
         </button>
       </div>
-      <div class="w-2/6  text-center lg:text-start">
+      <div class="w-2/6 lg:w-1/6 text-center lg:text-start">
         <a href="/">
           <h1>LOGO</h1>
         </a>
       </div>
-      <nav class="hidden lg:flex w-4/6 ">
+      <nav class="hidden lg:flex w-4/6 lg:w-5/6 z-50">
         <ul class="flex font-serif gap-12 justify-center w-full">
           <li><RouterLink class="uppercase hover:text-blue-800" to="/">home</RouterLink></li>
           <li>
@@ -127,13 +131,41 @@ onUnmounted(()=>window.removeEventListener('scroll',handleScroll))
   </header>
   <RouterView />
 
-  <footer>
+  <footer class="hidden">
     <div>
       <span>LOGO</span>
       <div>
         <p>Mantente al tanto</p>
-        <p>Accede primero a nuevos lanzamientos, ofertas exclusivas e historias de nuestro atelier.</p>
-        <form class="relative"><input type="email" placeholder="Tu correo electrónico" class="w-full bg-transparent border-b border-background/20 focus:border-primary py-3 pr-12 text-sm text-background placeholder:text-background/30 focus:outline-none transition-colors" value=""><button type="submit" class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-background/50 hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-5 h-5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button></form>
+        <p>
+          Accede primero a nuevos lanzamientos, ofertas exclusivas e historias de nuestro atelier.
+        </p>
+        <form class="relative">
+          <input
+            type="email"
+            placeholder="Tu correo electrónico"
+            class="w-full bg-transparent border-b border-background/20 focus:border-primary py-3 pr-12 text-sm text-background placeholder:text-background/30 focus:outline-none transition-colors"
+            value=""
+          /><button
+            type="submit"
+            class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-background/50 hover:text-primary transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-right w-5 h-5"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </button>
+        </form>
       </div>
     </div>
     <div>

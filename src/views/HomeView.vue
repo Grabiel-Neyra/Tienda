@@ -17,7 +17,7 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
       <div class="absolute inset-0 bg-linear-to-t from-white via-transparent to-transparent"></div>
     </div>
     <div
-      class="z-50 relative w-full min-h-screen flex-1 max-w-7xl mx-auto px-6 lg:px-8 items-center pt-24 pb-16"
+      class="z-10 relative w-full min-h-screen flex-1 max-w-7xl mx-auto px-6 lg:px-8 items-center pt-24 pb-16"
     >
       <div class="w-full lg:max-w-[55%]">
         <div
@@ -65,12 +65,12 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
   </section>
   <section class="py-24 bg-[#fdfdfd]">
     <div class="max-w-7xl mx-auto px-6">
-      <p class="uppercase text-blue-600 tracking-widest text-xl mb-5 font-light">
+      <p class="uppercase text-blue-600 tracking-widest text-lg mb-5 font-light">
         Colecciones Curadas
       </p>
       <h2 class="font-semibold tracking-tight mb-5 text-3xl">Comprar por Categoría</h2>
-      <div class="grid grid-cols-1 gap-4">
-        <div class="h-80">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="h-80 lg:col-span-2">
           <RouterLink
             class="group overflow-hidden object-cover block h-full relative rounded-2xl cursor-pointer"
             to="/productos"
@@ -208,7 +208,7 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
             </div>
           </RouterLink>
         </div>
-        <div class="h-80">
+        <div class="h-80 lg:col-span-2">
           <RouterLink
             class="group overflow-hidden object-cover block h-full relative rounded-2xl cursor-pointer"
             to="/productos"
@@ -258,63 +258,69 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
     </div>
   </section>
   <section class="py-24 bg-[#f5f5f7]/80">
-    <div class="max-w-7xl px-6 grid grid-cols-1 gap-9">
-      <p class="uppercase text-xl text-blue-600 tracking-widest font-light">Selección Especial</p>
-      <h2>Colección Destacada</h2>
-      <div
-        class="relative cols overflow-hidden"
-        v-for="producto in productosDestacados"
-        :key="producto.id"
-      >
-        <RouterLink class="" :to="`/detalle/${producto.id}`">
-          <span
-            class="absolute top-2 left-3 bg-blue-600 uppercase text-white font-semibold py-1 px-3 text-[12px] z-10 rounded-2xl"
-            v-if="producto.tag !== null"
-            >{{ producto.tag }}</span
-          >
-          <div class="relative aspect-square overflow-hidden rounded-2xl mb-4">
-            <div>
-              <img
-                class="hover:scale-110 object-cover transition-all duration-700 ease-out rounded-2xl"
-                :src="producto.image"
-                :alt="producto.name"
-              />
-            </div>
-            <div
-              class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
+    <div class="max-w-7xl px-6 mx-auto">
+      <p class="uppercase mb-5 text-lg text-blue-600 tracking-widest font-light">
+        Selección Especial
+      </p>
+      <h2 class="font-semibold tracking-tight mb-5 text-3xl">Colección Destacada</h2>
+      <div class="grid grid-cols-1 gap-9 lg:grid-cols-3">
+        <div
+          class="relative cols overflow-hidden"
+          v-for="producto in productosDestacados"
+          :key="producto.id"
+        >
+          <RouterLink class="" :to="`/detalle/${producto.id}`">
+            <span
+              class="absolute top-2 left-3 bg-blue-600 uppercase text-white font-semibold py-1 px-3 text-[12px] z-10 rounded-2xl"
+              v-if="producto.tag !== null"
+              >{{ producto.tag }}</span
             >
-              <button
-                class="w-full bg-foreground/90 backdrop-blur-sm text-background py-3.5 flex items-center justify-center gap-2 text-sm font-medium tracking-wide hover:bg-foreground transition-colors"
+            <div class="relative aspect-square overflow-hidden rounded-2xl mb-4">
+              <div>
+                <img
+                  class="hover:scale-110 object-cover transition-all duration-700 ease-out rounded-2xl"
+                  :src="producto.image"
+                  :alt="producto.name"
+                />
+              </div>
+              <div
+                class="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-6"
+                <button
+                  class="w-full bg-foreground/90 backdrop-blur-sm text-background py-3.5 flex items-center justify-center gap-2 text-sm font-medium tracking-wide hover:bg-foreground transition-colors"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                  />
-                </svg>
-                Agregar
-              </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                    />
+                  </svg>
+                  Agregar
+                </button>
+              </div>
             </div>
-          </div>
-          <div>
-            <p class="font-medium text-foreground text-sm tracking-tight">{{ producto.name }}</p>
-            <p class="text-sm font-semibold text-foreground tabular-nums">${{ producto.price }}</p>
-          </div>
-        </RouterLink>
+            <div>
+              <p class="font-medium text-foreground text-sm tracking-tight">{{ producto.name }}</p>
+              <p class="text-sm font-semibold text-foreground tabular-nums">
+                ${{ producto.price }}
+              </p>
+            </div>
+          </RouterLink>
+        </div>
       </div>
     </div>
   </section>
-  <section class="py-24">
+  <section class="py-24 bg-[#f5f5f7]/30">
     <div class="max-w-7xl mx-auto px-6">
-      <p class="uppercase text-xl text-blue-600 tracking-widest mb-5 font-light">Quienes somos</p>
+      <p class="uppercase text-lg text-blue-600 tracking-widest mb-5 font-light">Quienes somos</p>
       <h2 class="font-semibold tracking-tight mb-5 text-3xl">
         Nació de una obsesión por lo <span class="text-blue-600">auténtico</span>
       </h2>
@@ -331,8 +337,8 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
           algo vale la pena.
         </p>
       </div>
-      <div>
-        <div class="rounded-3xl mb-8 relative aspect-4/3 overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="rounded-3xl lg:col-span-2 mb-8 relative aspect-4/3 overflow-hidden">
           <img
             src="../img/quienes-somos-home.jpg"
             alt="Quienes somos"
@@ -343,112 +349,118 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
             <span class="text-sm text-white/80 font-medium">Atelier Luminous — Madrid, 2018</span>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="flex flex-col items-start w-full p-6 gap-2">
-            <span class="text-3xl tracking-tight font-bold ">6+</span>
+        <div class="grid-cols-2 grid lg:grid-cols-1 gap-4">
+          <div
+            class="flex flex-col items-start w-full p-6 gap-2 bg-white border border-gray-200 rounded-2xl"
+          >
+            <span class="text-3xl tracking-tight font-bold">6+</span>
             <span>Años de trayectoria</span>
           </div>
-          <div class="flex flex-col items-start w-full p-6 gap-2">
-            <span class="text-3xl tracking-tight font-bold ">12K+</span>
+          <div
+            class="flex flex-col items-start w-full p-6 gap-2 bg-white border border-gray-200 rounded-2xl"
+          >
+            <span class="text-3xl tracking-tight font-bold">12K+</span>
             <span>Clientes satisfechos</span>
           </div>
-          <div class="flex flex-col items-start w-full p-6 gap-2">
-            <span class="text-3xl tracking-tight font-bold ">4</span>
+          <div
+            class="flex flex-col items-start w-full p-6 gap-2 bg-white border border-gray-200 rounded-2xl"
+          >
+            <span class="text-3xl tracking-tight font-bold">4</span>
             <span>Colecciones al año</span>
           </div>
-          <div class="flex flex-col items-start w-full p-6 gap-2">
-            <span class="text-3xl tracking-tight font-bold ">100%</span>
+          <div
+            class="flex flex-col items-start w-full p-6 gap-2 bg-white border border-gray-200 rounded-2xl"
+          >
+            <span class="text-3xl tracking-tight font-bold">100%</span>
             <span>Materiales certificados</span>
           </div>
         </div>
-      </div>
-      <div>
-        <div>
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-6"
-            >
-              <path
+        <div class="grid-cols-1 lg:col-span-3 lg:grid-cols-3 grid gap-5">
+          <div class="border text-start p-8 space-y-4 rounded-3xl bg-white border-gray-200">
+            <div class="w-12 h-12 rounded-2xl flex justify-center items-center bg-blue-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-7 text-blue-600"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Diseño Intemporal</h3>
+            <p class="text-black/60 leading-relaxed">
+              Creamos piezas que trascienden las tendencias. Cada producto está pensado para durar
+              décadas, no temporadas.
+            </p>
+          </div>
+          <div class="border text-start p-8 space-y-4 rounded-3xl bg-white border-gray-200">
+            <div class="w-12 h-12 rounded-2xl flex justify-center items-center bg-blue-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
-              />
-            </svg>
-          </div>
-          <h3>Diseño Intemporal</h3>
-          <p>
-            Creamos piezas que trascienden las tendencias. Cada producto está pensado para durar
-            décadas, no temporadas.
-          </p>
-        </div>
-        <div>
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-leaf w-5 h-5 text-primary"
-            >
-              <path
-                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
-              ></path>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-            </svg>
-            <h3>Producción Responsable</h3>
-            <p>
+                class="size-7 text-blue-600"
+              >
+                <path
+                  d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+                ></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Producción Responsable</h3>
+            <p class="text-black/60 leading-relaxed">
               Trabajamos con materiales sostenibles y talleres certificados que respetan tanto al
               artesano como al planeta.
             </p>
           </div>
-        </div>
-        <div>
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shield-check w-5 h-5 text-primary"
-            >
-              <path
-                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-              ></path>
-              <path d="m9 12 2 2 4-4"></path>
-            </svg>
+          <div class="border text-start p-8 space-y-4 rounded-3xl bg-white border-gray-200">
+            <div class="w-12 h-12 rounded-2xl flex justify-center items-center bg-blue-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-7 text-blue-600"
+              >
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold">Calidad Garantizada</h3>
+            <p class="text-black/60 leading-relaxed">
+              Cada artículo pasa por un proceso de control riguroso. Si no cumple nuestro estándar,
+              no llega a tus manos.
+            </p>
           </div>
-          <h3>Calidad Garantizada</h3>
-          <p>
-            Cada artículo pasa por un proceso de control riguroso. Si no cumple nuestro estándar, no
-            llega a tus manos.
-          </p>
         </div>
       </div>
     </div>
   </section>
-  <section>
+  <section class="py-24 bg-color=[#fdfdfd]">
     <div class="max-w-7xl mx-auto px-6">
-      <p class="uppercase text-xl text-blue-600 tracking-widest mb-5 font-light">
+      <p class="uppercase text-lg text-blue-600 tracking-widest mb-5 font-light">
         Miles de Clientes Satisfechos
       </p>
-      <h2 class="font-semibold tracking-tight mb-5 text-3xl">Lo Que Dicen Nuestros Clientes</h2>
-      <div>
-        <div>
+      <h2 class="font-semibold tracking-tight mb-5 text-3xl text-center lg:text-left">
+        Lo Que Dicen Nuestros Clientes
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 my-10">
+        <div class="border border-gray-200 py-5 px-3 rounded-3xl space-y-6">
           <div class="flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -515,12 +527,12 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
             "La calidad no tiene igual. Cada pieza se siente diseñada con una atención obsesiva al
             detalle. Mi opción favorita para todo lo que necesita ser atemporal."
           </p>
-          <div>
-            <h3>Maya Chen</h3>
-            <p>Creative Director</p>
+          <div class="border-t border-gray-300 pt-3">
+            <h3 class="text-md font-bold">Maya Chen</h3>
+            <p class="text-sm mt-05 text-black/50">Creative Director</p>
           </div>
         </div>
-        <div>
+        <div class="border border-gray-200 py-5 px-3 rounded-3xl space-y-6">
           <div class="flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -571,16 +583,16 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
               />
             </svg>
           </div>
+          <p>
+            "Aprecio las marcas que entienden la sobriedad. Luminous ofrece piezas que son mínimas
+            pero sustanciales — exactamente lo que mi guardarropa necesitaba."
+          </p>
+          <div class="border-t border-gray-300 pt-3">
+            <h3 class="text-md font-bold">James Rodriguez</h3>
+            <p class="text-sm mt-05 text-black/50">Architect</p>
+          </div>
         </div>
-        <p>
-          "Aprecio las marcas que entienden la sobriedad. Luminous ofrece piezas que son mínimas
-          pero sustanciales — exactamente lo que mi guardarropa necesitaba."
-        </p>
-        <div>
-          <h3>James Rodriguez</h3>
-          <p>Architect</p>
-        </div>
-        <div>
+        <div class="border border-gray-200 py-5 px-3 rounded-3xl space-y-6">
           <div class="flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -647,29 +659,28 @@ const productosDestacados = productos.filter((p) => p.tag === 'Popular')
             "Desde el empaque hasta el producto en sí, toda la experiencia se siente curada. El
             reloj Chronos se ha convertido en mi esencial diario. El envío fue impecable."
           </p>
-          <div>
-            <h3>Aiko Tanaka</h3>
-            <p>Product Designer</p>
+          <div class="border-t border-gray-300 pt-3">
+            <h3 class="text-md font-bold">Aiko Tanaka</h3>
+            <p class="text-sm mt-05 text-black/50">Product Designer</p>
           </div>
         </div>
       </div>
-
-      <div>
-        <div>
-          <p>12K+</p>
-          <p>Clientes Felices</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 p-8 bg-[#f5f5f7]/80 rounded-2xl">
+        <div class="text-center">
+          <p class="text-2xl font-bold tracking-tight">12K+</p>
+          <p class="text-md mt-1">Clientes Felices</p>
         </div>
-        <div>
-          <p>4.9+</p>
-          <p>Calificación Promedio</p>
+        <div class="text-center">
+          <p class="text-2xl font-bold tracking-tight">4.9+</p>
+          <p class="text-md mt-1">Calificación Promedio</p>
         </div>
-        <div>
-          <p>98%</p>
-          <p>Tasa de Satisfacción</p>
+        <div class="text-center">
+          <p class="text-2xl font-bold tracking-tight">98%</p>
+          <p class="text-md mt-1">Tasa de Satisfacción</p>
         </div>
-        <div>
-          <p>24H</p>
-          <p>Envío Rápido</p>
+        <div class="text-center">
+          <p class="text-2xl font-bold tracking-tight">24H</p>
+          <p class="text-md mt-1">Envío Rápido</p>
         </div>
       </div>
     </div>
